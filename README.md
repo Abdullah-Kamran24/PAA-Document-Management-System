@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # PAA Internship Project — Document Management System (DMS)
 
 ## Internship Details
