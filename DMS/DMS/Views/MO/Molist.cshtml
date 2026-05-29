@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Main Office List";
+}
+
+<h1>Main Office's List</h1>
+
+<table class="table table-bordered table-striped" id="DT_Load">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Short Name</th>
+            <th>Full Name</th>
+            <th>Location Name</th>
+            <th>Edit & Delete</th>
+        </tr>
+    </thead>
+    <tbody></tbody> 
+</table>
+
+<div style="text-align:center;">
+    <a href="/MO/Create">Create New Office</a>
+</div>
+
+@section PageScripts {
+    <script src="/js/mo/Molist.js"></script>
+}

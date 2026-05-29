@@ -1,0 +1,110 @@
+﻿@model List<DMS.Models.MainOffice>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f4f8;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 30px;
+        color: #333;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    a {
+        display: inline-block;
+        margin: 5px;
+        padding: 8px 15px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+    .action-links {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .edit-button {
+        background-color: #2196F3;
+    }
+
+        .edit-button:hover {
+            background-color: #0b7dda;
+        }
+</style>
+
+
+<h1>Main Offices List</h1>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p style="color: green; text-align:center; font-weight:bold;">
+        @ViewBag.Message
+    </p>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>MO Code</th>
+            <th>Short Name</th>
+            <th>Full Name</th>
+            <th>Location Name</th>
+            <th>Edit & Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mo in Model)
+        {
+            <tr>
+                <td>@mo.MoCode</td>
+                <td>@mo.ShortName</td>
+                <td>@mo.FullName</td>
+                <td>@(mo.Location?.ShortName ?? "—")</td>
+                <td>
+                    <a class="edit-button"
+                       href="@Url.Action("Update", "MO", new { id = mo.MoCode })">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="text-align:center;">
+    <a href="@Url.Action("Create", "MO")">Create New Main Office</a>
+</div>
